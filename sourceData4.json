@@ -1,0 +1,106 @@
+{
+    "nodes": [{
+            "id": "n0",
+            "label": "x1",
+            "x": 6,
+            "y": 0,
+            "size": 5
+    }, {
+            "id": "n1",
+            "label": "x2",
+            "x": 2,
+            "y": 4,
+            "size": 5
+    },
+        {
+            "id": "n2",
+            "label": "x3",
+            "x": 4,
+            "y": 8,
+            "size": 5
+              },
+
+        {
+            "id": "n3",
+            "label": "x4",
+            "x": 8,
+            "y": 8,
+            "size": 5
+              },
+        {
+            "id": "n4",
+            "label": "x5",
+            "x": 10,
+            "y": 4,
+            "size": 5
+              },
+        {
+            "id": "n5",
+            "label": "x6",
+            "x": 6,
+            "y": 5,
+            "size": 5
+              }
+             ],
+    "edges": [{
+            "id": "e0",
+            "source": "n0",
+            "target": "n1"
+    }, {
+            "id": "e1",
+            "source": "n0",
+            "target": "n4"
+    }, {
+            "id": "e2",
+            "source": "n0",
+            "target": "n5"
+    },
+        {
+            "id": "e3",
+            "source": "n1",
+            "target": "n2"
+              },
+        {
+            "id": "e4",
+            "source": "n1",
+            "target": "n5"
+              },
+        {
+            "id": "e5",
+            "source": "n2",
+            "target": "n3"
+              },
+        {
+            "id": "e6",
+            "source": "n3",
+            "target": "n4"
+              }, {
+            "id": "e7",
+            "source": "n4",
+            "target": "n5"
+              }, {
+            "id": "e8",
+            "source": "n0",
+            "target": "n2"
+              },
+        {
+            "id": "e9",
+            "source": "n0",
+            "target": "n3"
+              },
+        {
+            "id": "e10",
+            "source": "n1",
+            "target": "n3"
+              },
+        {
+            "id": "e11",
+            "source": "n5",
+            "target": "n2"
+              },
+        {
+            "id": "e12",
+            "source": "n5",
+            "target": "n3"
+              }]
+}

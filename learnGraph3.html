@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Задание №3: Графы Гамильтона</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.parsers.json.min.js"></script>
+    <script type="text/javascript" src="http://chaijs.com/chai.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/dist/sweetalert.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/themes/google/google.css">
+
+</head>
+
+<body>
+    <div class="main-container">
+
+        <header class="main-header clearfix">
+            <p class="task-name">Задание №3: Графы Гамильтона</p>
+            <ul class="header-buttons">
+                <li class="btn-list">
+                    <a class="btn btn-exit">Выход</a>
+                </li>
+        </header>
+
+        <div class="content-container clearfix">
+            <div class="column-left">
+                <div class="theory">
+                    <div class="block-header theory-title">
+                        Теория
+                    </div>
+                    <div class="theory-content">
+                        <h3>Основные определения</h3>
+                        <p><b>Определение 1.</b> <u>Гамильтоновым путём</u> (англ. Hamiltonian path) называется простой путь, приходящий через каждую вершину графа ровно один раз.</p>
+                        <p><b>Определение 2.</b> <u>Гамильтоновым циклом</u> (англ. Hamiltonian cycle) называют замкнутый гамильтонов путь.</p>
+                        <p><b>Определение 3.</b> Граф называется <u>полугамильтоновым</u> (англ. Semihamiltonian graph), если он содержит гамильтонов путь.</p>
+                        <p><b>Определение 4.</b> Граф называется <u>гамильтоновым</u> (англ. Hamiltonian graph), если он содержит гамильтонов цикл.</p>
+                        <h3>Существование гамильтонова цикла в неориентированном графе</h3>
+                        <p><b>Необходимое условие существования гамильтонова цикла в неориентированном графе:</b> если неориентированный граф G содержит гамильтонов цикл, тогда в нём не существует ни одной вершины x(i) с локальной степенью p(x(i))&lt;2.</p>
+                        <p>Доказательство следует из определения.</p>
+                        <p><b>Условие Поша:</b> Пусть граф G имеет p>2 вершин. Если для всякого n, 0&lt;n&lt;(p-1)/2, число вершин со степенями меньшими или равными n меньше, чем n, и для нечетного p число вершин со степенью (p-1)/2 не превосходит (p-1)/2, то G — гамильтонов граф. Это достаточное условие не является необходимым.</p>
+                        <p>Как следствие теоремы Поша, получаем более простые и менее сильные достаточные условия, найденные Дираком и Оре.</p>
+                        </p>В 1952 году было сформулировано <b>условие Дирака существования гамильтонова пути:</b> пусть p — число вершин в данном графе и p>3; если степень каждой вершины не меньше, чем p/2, то данный граф — гамильтонов.</p>
+                <p><b>Условие Оре:</b> пусть p — количество вершин в данном графе и p>2. Если для любой пары несмежных вершин (x, y) выполнено неравенство deg x + deg 	&ge; p, то данный граф — гамильтонов (другими словами: сумма степеней любых двух несмежных вершин не меньше общего числа вершин в графе).</p>
+                        <p>Теорема Бонди-Хватала обобщает утверждения Дирака и Оре. Для графа G с n вершинами замыкание определяется добавлением в G ребра (u,v) для каждой пары несмежных вершин u и v, сумма степеней которых не меньше n (другими словами: граф является гамильтоновым тогда и только тогда, когда его замыкание — гамильтонов граф).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-middle">
+                <div class="task">
+                    <div class="block-header">
+                        Задание
+                    </div>
+                    <div class="task-content">
+                        <p>На рисунке изображён граф, который не является графом Гамильтона. Необходимо исправить его так, чтобы он стал графом Гамильтона, путём добавления одного или несокльких рёбер.</p>
+                        <p>В текстовом редакторе необходимо ввести матрицу смежности. Используйте запятую "," в качестве разделителя. Затем нажнимте кнопку "Построить граф".</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="editor-unblocked">
+                    <div id="editor">
+                        <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column-right">
+                <div class="source-image-block">
+                    <div class="block-header">
+                        Исходный граф
+                    </div>
+                    <div class="source-image" id="source-image">
+                    </div>
+                </div>
+                <div class="visualizator-block">
+                    <div class="block-header">
+                        Результат
+                    </div>
+                    <div class="visualizator" id="visualizator">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controls-block">
+        <div class="controls-container clearfix">
+            <a class="btn control-btn prev-btn" href="learnGraph2.html">
+                        Назад
+                    </a>
+            <a class="btn control-btn next-btn disabled" id="next" href="learnGraph4.html">
+                        Вперёд
+                    </a>
+            <button class="btn control-btn construct-btn" id="build" onclick="visualizeIt()">
+                Построить граф
+            </button>
+            <button class="btn control-btn check-btn" id="check" onclick="checkHamilton()">
+                Проверить
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    </footer>
+    </div>
+
+    </div>
+    <script type="text/javascript" src="./js/script3.js"></script>
+</body>

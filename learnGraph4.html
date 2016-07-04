@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Задание №4: Построение остовного дерева графа</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.parsers.json.min.js"></script>
+    <script type="text/javascript" src="http://chaijs.com/chai.js"></script>
+    <script src="./plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./plugins/sweetalert/dist/dist/sweetalert.css">
+    <link rel="stylesheet" href="./plugins/sweetalert/dist/sweetalert.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/themes/google/google.css">
+
+</head>
+
+<body>
+    <div class="main-container">
+        <header class="main-header clearfix">
+            <p class="task-name">Задание №4: Построение остовного дерева графа</p>
+            <ul class="header-buttons">
+                <li class="btn-list">
+                    <a class="btn btn-exit">Выход</a>
+                </li>
+        </header>
+
+        <div class="content-container clearfix">
+            <div class="column-left">
+                <div class="theory">
+                    <div class="block-header theory-title">
+                        Теория
+                    </div>
+                    <div class="theory-content">
+                        <p><b>Остовное дерево</b> — ациклический связный подграф данного связного неориентированного графа, в который входят все его вершины. Неформально говоря, остовное дерево состоит из некоторого подмножества рёбер графа, таких, что из любой вершины графа можно попасть в любую другую вершину, двигаясь по этим рёбрам, и в нём нет циклов, то есть из любой вершины нельзя попасть в саму себя, не пройдя какое-то ребро дважды.</p>
+                        <p>Понятие остовный лес неоднозначно, под ним могут понимать один из следующих подграфов:
+                            <ul>
+                                <li>любой ациклический подграф, в который входят все вершины графа, но не обязательно связный;</li>
+                                <li>в несвязном графе — подграф, состоящий из объединения остовных деревьев для каждой его компоненты связности.</li>
+                            </ul>
+                        </p>
+                        <p>Остовное дерево также иногда называют покрывающим деревом, остовом или скелетом графа. Ударение в слове «остовный» у разных авторов указывается на первый (от слова о́стов) или на второй слог.</p>
+                        <p>
+                            <h3>Свойства</h3>
+                            <ul>
+                                <li>
+                                Любое остовное дерево в графе с n вершинами содержит ровно n - 1 ребро.
+                                </li>
+                                <li>
+                                    Число остовных деревьев в полном графе на n вершинах выражается формулой Кэли: n<sup>n-2</sup>
+                                </li>
+                                <li>
+                                    В общем случае, число остовных деревьев в произвольном графе может быть вычислено при помощи так называемой матричной теоремы о деревьях.
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-middle">
+                <div class="task">
+                    <div class="block-header">
+                        Задание
+                    </div>
+                    <div class="task-content">
+                        <p>Вашим заданием является построение остовного дерева исходного графа.</p>
+                        <p>В текстовом редакторе необходимо ввести матрицу смежности. Используйте запятую "," в качестве разделителя. Затем нажнимте кнопку "Построить граф".</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="editor-unblocked">
+                    <div id="editor">
+                        <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column-right">
+                <div class="source-image-block">
+                    <div class="block-header">
+                        Исходный граф
+                    </div>
+                    <div class="source-image" id="source-image">
+                        <!--<iframe src="test.html" sandbox="allow-same-origin allow-scripts" id="iframe1" width="100%" height="100%" >
+</iframe> -->
+                    </div>
+                </div>
+                <div class="visualizator-block">
+                    <div class="block-header">
+                        Результат
+                    </div>
+                    <div class="visualizator" id="visualizator">
+                        <!--<iframe sandbox="allow-same-origin allow-scripts" id="iframe" width="100%" height="100%" >
+</iframe> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="controls-block">
+        <div class="controls-container clearfix">
+            <a class="btn control-btn prev-btn" href="learnGraph3.html">
+                        Назад
+                    </a>
+            <a class="btn control-btn next-btn disabled" id="next">
+                        Вперёд
+                    </a>
+            <button class="btn control-btn construct-btn" id="build" onclick="visualizeIt()">
+                Построить граф
+            </button>
+            <button class="btn control-btn check-btn" id="check" onclick="treeCheck()">
+                Проверить
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    </footer>
+    </div>
+
+    </div>
+    <script type="text/javascript" src="./js/script4.js"></script>
+</body>

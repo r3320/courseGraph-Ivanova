@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Задание №2: Графы Эйлера</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.min.js"></script>
+    <script type="text/javascript" src="./plugins/sigma.parsers.json.min.js"></script>
+    <script type="text/javascript" src="http://chaijs.com/chai.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/dist/sweetalert.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/themes/google/google.css">
+
+</head>
+
+<body>
+    <script src='http://d3js.org/d3.v3.min.js'></script>
+    <div class="main-container">
+
+        <header class="main-header clearfix">
+            <p class="task-name">Задание №2: Графы Эйлера</p>
+            <ul class="header-buttons">
+                <li class="btn-list">
+                    <a class="btn btn-exit">Выход</a>
+                </li>
+        </header>
+
+        <div class="content-container clearfix">
+            <div class="column-left">
+                <div class="theory">
+                    <div class="block-header theory-title">
+                        Теория
+                    </div>
+                    <div class="theory-content">
+                        <h3>Основные определения</h3>
+                        <p><b>Определение 1.</b> <u>Эйлеровым путем</u> (англ. Eulerian path) в графе называется путь, который проходит по каждому ребру, причем ровно один раз.</p>
+                        <p><b>Определение 2.</b> <u>Эйлеров цикл</u> (англ. Eulerian cycle) — замкнутый эйлеров путь.</p>
+                        <p><b>Определение 3.</b> Граф называется <u>эйлеровым</u> (англ. Eulerian graph), если он содержит эйлеров цикл. Граф называется полуэйлеровым, если он содержит эйлеров путь, но не содержит эйлеров цикл.</p>
+                        <h3>Существование эйлерова цикла и эйлерова пути в неориентированном графе</h3>
+                        <p>Согласно теореме, доказанной Эйлером, эйлеров цикл существует тогда и только тогда, когда граф связный и в нём отсутствуют вершины нечётной степени.
+                        <p>Эйлеров путь в графе существует тогда и только тогда, когда граф связный и содержит не более двух вершин нечётной степени. Ввиду леммы о рукопожатиях, число вершин с нечётной степенью должно быть четным. А значит эйлеров путь существует только тогда, когда это число равно нулю или двум. Причём когда оно равно нулю, эйлеров путь вырождается в эйлеров цикл.
+                        </p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-middle">
+                <div class="task">
+                    <div class="block-header">
+                        Задание
+                    </div>
+                    <div class="task-content">
+                        <p>На рисунке изображён граф, который не является графом Эйлера. Необходимо отредактировать его, чтобы он стал графом Эйлера путём добавления двух вершин и некоторого числа рёбер.</p>
+                        <p>В текстовом редакторе необходимо ввести матрицу смежности, описывающую отредактированный граф. Затем нажмите кнопку "Построить граф".</p>
+
+                    </div>
+                </div>
+                <div class="editor-unblocked">
+                    <div id="editor">
+                        <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column-right">
+                <div class="source-image-block">
+                    <div class="block-header">
+                        Исходный граф
+                    </div>
+                    <div class="source-image" id="source-image">
+                    </div>
+                </div>
+                <div class="visualizator-block">
+                    <div class="block-header">
+                        Результат
+                    </div>
+                    <div class="visualizator" id="visualizator">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-block">
+        <div class="controls-container clearfix">
+            <a class="btn control-btn prev-btn" href="learnGraph1.html">
+                        Назад
+                    </a>
+            <a class="btn control-btn next-btn disabled" id="next" href="learnGraph3.html">
+                        Вперёд
+                    </a>
+            <button class="btn control-btn construct-btn" id="build" onclick="visualizeGraph()">
+                Построить граф
+            </button>
+            <button class="btn control-btn check-btn" id="check" onclick="checkEuler()">
+                Проверить
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    </footer>
+    </div>
+
+    </div>
+    <script type="text/javascript" src="./js/script2.js"></script>
+</body>
